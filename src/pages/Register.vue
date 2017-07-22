@@ -3,7 +3,7 @@
     <div class="column">
       <h2 class="ui orange  header">
         <div class="content">
-          #::Slacky::#
+          #::Slacky::Register#
         </div>
       </h2>
       <form class="ui large form" :class="{'error': hasErrors}">
@@ -68,8 +68,6 @@
         errors: [],
         usersRef: firebase.database().ref('users'),
         isLoading: false
-
-
       }
     },
     computed:{
@@ -90,21 +88,21 @@
                 photoURL: 'http://www.gravatar.com/avatar' + md5(user.email) + '?d=identicon'
               }).then(
                 () => {
-                    this.saveUserTOUsersRef(user).then( () =>{
-                      this.$store.dispatch('setUser', user);
-                      user.sendEmailVerification()
-                        .then(
-                          ()=>{
-                            console.log('Email sent');
-                          },
-                          error => {
-                            console.error(error);
-                          });
-                      this.$router.push('/');
-                    })
+                  this.saveUserTOUsersRef(user).then( () =>{
+                    this.$store.dispatch('setUser', user);
+                    user.sendEmailVerification()
+                      .then(
+                        ()=>{
+                          console.log('Email sent');
+                        },
+                        error => {
+                          console.error(error);
+                        });
+                    this.$router.push('/');
+                  })
                 },
                 error => {
-                  console.log(error)
+                  console.log(error);
                   this.errors.push(error.message)
                   this.isLoading = false
 
