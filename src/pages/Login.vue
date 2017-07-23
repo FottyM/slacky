@@ -12,14 +12,14 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text" name="email" placeholder="E-mail address" v-model.trim="email">
+              <input type="text" name="email" placeholder="E-mail address" v-model.trim="email" required>
             </div>
           </div>
 
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password" v-model.trim="password">
+              <input type="password" name="password" placeholder="Password" v-model.trim="password" required>
             </div>
           </div>
 
@@ -72,7 +72,7 @@
             })
             .catch( error => {
               this.errors.push(error.message)
-              this.errors.push(error.message)
+              this.isLoading = false;
             })
         }
 

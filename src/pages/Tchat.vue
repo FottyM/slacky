@@ -1,19 +1,18 @@
 <template>
   <div>
-    <aside>
-
-    </aside>
-    <article>
-
-    </article>
-
-    <button @click="logout"> Logout </button>
+    <div class="slaky_container">
+      <sidebar></sidebar>
+      <messages></messages>
+    </div>
   </div>
 </template>
 <script>
+  import Sidebar from '../components/sidebar/Sidebar.vue'
+  import Messages from '../components/Messages.vue'
 
   export default {
-    name:'tchat',
+    name: 'tchat',
+    components: {Sidebar, Messages},
     data(){
       return {
 
@@ -27,12 +26,11 @@
       logout(){
         firebase.auth().signOut().then(
           () => {
-            alert('Logged out');
             this.$router.push('/login')
+            this.$store.dispatch('setUser', null)
           },
           (error) =>{
-            console.error(error);
-            alert("Can't log out");
+            alert(error.message);
           })
       }
 
@@ -41,3 +39,10 @@
   }
 
 </script>
+
+<style scoped>
+  .slaky_container{
+    height:100%;
+
+  }
+</style>

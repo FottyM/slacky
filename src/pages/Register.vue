@@ -3,7 +3,7 @@
     <div class="column">
       <h2 class="ui orange  header">
         <div class="content">
-          #::Slacky::Register#
+          #Slacky::Register#
         </div>
       </h2>
       <form class="ui large form" :class="{'error': hasErrors}">
@@ -12,28 +12,28 @@
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text" name="name" placeholder="username please" v-model.trim="name">
+              <input type="text" name="name" placeholder="username please" v-model.trim="name" required>
             </div>
           </div>
 
           <div class="field">
             <div class="ui left icon input">
               <i class="user icon"></i>
-              <input type="text" name="email" placeholder="E-mail address" v-model.trim="email">
+              <input type="text" name="email" placeholder="E-mail address" v-model.trim="email" required>
             </div>
           </div>
 
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password" v-model.trim="password">
+              <input type="password" name="password" placeholder="Password" v-model.trim="password" required>
             </div>
           </div>
 
           <div class="field">
             <div class="ui left icon input">
               <i class="lock icon"></i>
-              <input type="password" name="password_confirmantion" placeholder="Password confirmation" v-model.trim="password_confirmation">
+              <input type="password" name="password_confirmantion" placeholder="Password confirmation" v-model.trim="password_confirmation" required>
             </div>
           </div>
 
@@ -85,7 +85,7 @@
             .then(user => {
               user.updateProfile({
                 displayName: this.name,
-                photoURL: 'http://www.gravatar.com/avatar' + md5(user.email) + '?d=identicon'
+                photoURL: `http://www.gravatar.com/avatar/${md5(user.email)}?d=identicon`
               }).then(
                 () => {
                   this.saveUserTOUsersRef(user).then( () =>{

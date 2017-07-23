@@ -12,17 +12,31 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: Login,
+      beforeEnter: (to, from, next) => {
+        return firebase.auth().currentUser ? next('/') : next();
+      }
     },
     {
       path: '/register',
       name: 'register',
-      component: Register
+      component: Register,
+      beforeEnter: (to, from, next) => {
+        return firebase.auth().currentUser ? next('/') : next();
+      }
     },
     {
       path: '/',
       name: 'tchat',
-      component: Tchat
+      component: Tchat,
+      beforeEnter: (to, from, next) => {
+        return !firebase.auth().currentUser ? next('/login') : next()
+
+      }
+    },
+    {
+      path: '*',
+      redirect: '/'
     }
   ]
 })
