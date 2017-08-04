@@ -1,14 +1,18 @@
 <template>
   <div class="sidebar">
-    <h1 class="ui inverted center aligned header"> #Slacky#</h1>
+    <!--<h1 class="ui inverted center aligned header"> #Slacky#</h1>-->
     <connected-user></connected-user>
+    <channels-list></channels-list>
   </div>
 </template>
 <script>
-  import ConnectedUser from './ConnectedUser.vue';
+  import ConnectedUser from './ConnectedUser.vue'
+
+  import ChannelsList from './Channels-list.vue'
+
   export default {
     name: 'sidebar',
-    components:{ ConnectedUser }
+    components:{ ConnectedUser, ChannelsList }
   }
 </script>
 

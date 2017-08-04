@@ -2,13 +2,13 @@
   <div class="slacky_connected_user_container">
     <div class="ui items">
       <div class="ui item">
-        <div class="ui tiny circular image avatar  ">
+        <div class="ui tiny image avatar  ">
           <img :src="currentUser.photoURL" alt="avatar">
         </div>
         <div class="middle aligned content">
           <div class="ui container">
             <div class="ui inverted header">
-              {{currentUser.displayName}}
+              <h2 > {{currentUser.displayName}}</h2>
             </div>
           </div>
         </div>
@@ -55,9 +55,9 @@
     box-shadow: -4px 1px 8px 3px #360F01;
   }
 
-  .avatar{
-    box-shadow: 1px 1px 4px 3.5px #360F01;
-  }
+  /*.avatar{*/
+    /*box-shadow: 1px 1px 4px 3.5px #360F01;*/
+  /*}*/
 
 
 </style>
