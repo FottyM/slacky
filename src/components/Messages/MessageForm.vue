@@ -24,7 +24,8 @@
     name: 'message-form',
     data(){
       return{
-        message: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut dicta enim eveniet magni non possimus quas, quibusdam quos reprehenderit. Amet consequatur debitis deserunt eos magnam magni mollitia, perferendis quos ullam?'
+        message: '',
+        errors: []
       }
     },
     computed:{
@@ -32,8 +33,42 @@
     }
     ,
     methods:{
+      newMessage(){
+        return {
+          content: this.message,
+          timestamp: firebase.database.ServerValue.TIMESTAMP,
+          user:{
+            name: this.currentUser.displayName,
+            avatar: this.currentUser.photoURL,
+            id: this.currentUser.uid
+          }
+        }
+      },
       sendMessage(){
-        this.$parent.messagesRef.child(this.currentChannel.id)
+        let newMessage = this.newMessage();
+
+        console.log(!this.isEmpty(newMessage.content));
+        //TODO: disable the button instead of this
+        if(!this.isEmpty(newMessage.content) && this.currentChannel !== null ){
+
+          this.$parent.messagesRef.child(this.currentChannel.id)
+            .push()
+            .set(newMessage)
+            .then( () =>{
+
+            })
+            .catch((error) =>{
+              alert(error.message);
+              this.errors.push(error.message);
+            })
+        }else{
+          this.errors.push('trying to send and empty message?')
+        }
+
+        this.message = ''
+      },
+      isEmpty(message){
+        return message.length <= 0;
       }
     }
   }
