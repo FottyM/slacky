@@ -8,7 +8,7 @@
 </template>
 <script>
   import Sidebar from '../components/sidebar/Sidebar.vue'
-  import Messages from '../components/Messages.vue'
+  import Messages from '../components/Messages/Messages.vue'
 
   export default {
     name: 'tchat',
