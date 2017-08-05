@@ -20,11 +20,13 @@ npm run build --report
 
 For detailed explanation on how things work, checkout the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-#Screenshots so far
+# Screenshots so far
 
+So far a user can create an account and verify then email with a verification email,
+then he can create a channel to start messaging with other people in there.
+Next would be private messages.
 
-So far nothing impressive, I have a
-![Registration screen](screenshots/register.png) a
-![Login screen](screenshots/login.png) and a
+![Registration screen](screenshots/register.png) 
+![Login screen](screenshots/login.png) 
 ![Home screen](screenshots/homescreen.png)
-that's it.
+
